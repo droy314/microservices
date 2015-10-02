@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.0.32:8080/eureka/v2/
+    healthcheck: 
+      enabled: true
+  instance:
+    ipAddress : 192.168.0.37
+    preferIpAddress : true
+    metadataMap:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+
+security:
+  user:
+    password: admin
+
+endpoints:
+  shutdown:
+    enabled: true
+    
