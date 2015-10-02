@@ -109,29 +109,9 @@
 				<artifactId>docker-maven-plugin</artifactId>
 				<version>0.3.3</version>
 				<configuration>
-					<baseImage>resin/rpi-raspbian:jessie</baseImage>
-					<maintainer>Deepu Roy</maintainer>
 					<imageName>${project.artifactId}</imageName>
 					<imageName>${project.artifactId}</imageName>
-					<entryPoint>java -jar ${project.build.finalName}.jar</entryPoint>
-					<exposes>
-						<expose>8080</expose>
-					</exposes>
-					<runs>
-						<run>apt-get install -y openjdk-7-jre</run>
-					</runs>
-					<resources>
-						<resource>
-							<targetPath>/jars</targetPath>
-							<directory>${project.build.directory}</directory>
-							<include>${project.build.finalName}.jar</include>
-						</resource>
-						<resource>
-							<targetPath>/jars</targetPath>
-							<directory>${project.build.directory}/jars</directory>
-							<include>*.jar</include>
-						</resource>
-					</resources>
+					<dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
 				</configuration>
 			</plugin>
 		</plugins>
